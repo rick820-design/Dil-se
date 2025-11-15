@@ -1,0 +1,287 @@
+<!-- Updated romantic, colorful, animated version for Tiyasha --><!-- I will build a fully enhanced version here. --><html>
+<head>
+<style>
+    :root{
+      --bg:#0e0b1d;
+      --card:#16142b;
+      --accent:#ff9ecf;
+      --accent2:#c8a6ff;
+      --soft:#ffe6f7;
+      --muted:#d4cdea;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{
+      background:linear-gradient(180deg,#0b0a1a 0%, #17142d 60%);
+      color:#fff;
+      display:flex;align-items:center;justify-content:center;padding:20px;
+      overflow-x:hidden;
+    }
+    .container{width:980px;max-width:100%;background:rgba(255,255,255,0.04);border-radius:22px;padding:28px;box-shadow:0 12px 40px rgba(10,0,40,0.5);position:relative;overflow:hidden}/* dreamy glow animations */
+.glow{
+  animation:softglow 6s ease-in-out infinite alternate;
+}
+@keyframes softglow{
+  0%{filter:drop-shadow(0 0 6px var(--accent))}
+  100%{filter:drop-shadow(0 0 14px var(--accent2))}
+}
+
+header{display:flex;gap:18px;align-items:center}
+.logo{
+  width:70px;height:70px;border-radius:16px;overflow:hidden;flex:0 0 70px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;font-weight:700;color:#2b0020;font-size:28px;
+  box-shadow:0 0 12px rgba(255,150,200,0.5);
+}
+
+h1{margin:0;font-size:26px;color:var(--soft)}
+p.lead{margin:4px 0 0;color:var(--muted);font-size:15px}
+
+.main{display:grid;grid-template-columns:360px 1fr;gap:26px;margin-top:26px}
+
+.left{background:rgba(255,255,255,0.03);padding:18px;border-radius:14px;min-height:380px;display:flex;flex-direction:column;gap:14px;backdrop-filter:blur(4px)}
+
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.photo{
+  background:#111214;height:160px;border-radius:12px;border:2px solid rgba(255,255,255,0.05);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;
+  transition:0.3s;
+}
+.photo:hover{border-color:var(--accent);box-shadow:0 0 10px rgba(255,150,200,0.4)}
+.photo img{width:100%;height:100%;object-fit:cover}
+
+.right{padding:20px;border-radius:14px;background:rgba(255,255,255,0.02);min-height:380px;display:flex;flex-direction:column;justify-content:space-between;backdrop-filter:blur(4px)}
+
+.message{font-size:19px;line-height:1.55;color:var(--soft)}
+.message strong{color:var(--accent);font-size:21px}
+
+.sorry{
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  border:none;padding:12px 18px;border-radius:14px;color:#2b0020;font-weight:700;cursor:pointer;font-size:15px;
+  box-shadow:0 0 12px rgba(255,150,200,0.5);
+}
+
+.save{
+  background:#fff;padding:10px 14px;border-radius:14px;color:#2b0020;font-weight:700;border:none;cursor:pointer;
+}
+
+.btn2{
+  background:transparent;border:2px solid var(--accent);padding:10px 14px;border-radius:14px;color:var(--accent);font-weight:700;cursor:pointer;
+}
+
+footer{margin-top:14px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
+
+/* floating hearts */
+.heart-anim{
+  position:absolute;font-size:32px;opacity:0;animation:floatUp 2s ease-out forwards;
+}
+@keyframes floatUp{
+  0%{transform:translateY(20px) scale(.8);opacity:0}
+  60%{opacity:1}
+  100%{transform:translateY(-40px) scale(1);opacity:0}
+}
+
+/* soft sparkles */ .sparkle{ position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2; } @keyframes sparkleFloat{ 0%{transform:translateY(0) scale(.6);opacity:0} 50%{opacity:1} 100%{transform:translateY(-80px) scale(1);opacity:0} }
+
+/* floating particles */ .particle{ position:absolute;border-radius:50%;background:rgba(255,200,255,0.35);filter:blur(2px); animation: drift 10s infinite ease-in-out; } @keyframes drift{ 0%{transform:translateY(0)} 100%{transform:translateY(-200px)} }
+
+/* love meter */ .meter-container{ margin-top:18px;background:rgba(255,255,255,0.07);padding:14px;border-radius:14px;text-align:center; } .meter-bar{ width:0%;height:14px;border-radius:10px;background:linear-gradient(90deg,#ff9ecf,#c8a6ff); box-shadow:0 0 10px rgba(255,170,220,0.4); animation:fillBar 4s forwards; } @keyframes fillBar{ from{width:0%} to{width:100%} }
+
+/* fade-in for photos */ .photo img{animation:fadeIn 1.2s ease} @keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
+
+/* typing effect for message */ .typing{overflow:hidden;white-space:nowrap;border-right:2px solid var(--accent);animation:typing 4s steps(50,end), blink .8s infinite;} @keyframes typing{from{width:0}to{width:100%}} @keyframes blink{0%{border-color:transparent}50%{border-color:var(--accent)}100%{border-color:transparent}}
+
+/* pink fog glow */ .fog{ position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none; background:radial-gradient(circle at 50% 80%, rgba(255,180,255,0.15), transparent 60%); filter:blur(40px); z-index:-1; }
+
+/* firefly lights */ .firefly{ position:absolute;width:6px;height:6px;border-radius:50%;background:#ffd6ff; box-shadow:0 0 12px #ffd6ff; animation:fly 9s infinite ease-in-out; } @keyframes fly{ 0%{transform:translate(0,0);opacity:0.3} 50%{opacity:1} 100%{transform:translate(80px,-120px);opacity:0.3} }
+
+/* mouse heart trail */ .trail-heart{ position:fixed;font-size:18px;color:#ff9ecf;pointer-events:none; animation:floatTrail 1.2s ease-out forwards; } @keyframes floatTrail{ 0%{opacity:1;transform:translateY(0) scale(1)} 100%{opacity:0;transform:translateY(-20px) scale(1.4)} }
+
+/* pulse effect on her name / .pulse{ animation:pulseBeat 2.6s infinite ease-in-out; } @keyframes pulseBeat{ 0%{text-shadow:0 0 4px #ff9ecf} 50%{text-shadow:0 0 18px #ffbdf2} 100%{text-shadow:0 0 4px #ff9ecf} } / heartbeat background */ .heartbeat-bg{ position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2; background:radial-gradient(circle at center, rgba(255,160,200,0.12), transparent 70%); animation:heartPulse 5s infinite ease-in-out; } @keyframes heartPulse{ 0%{opacity:0.4} 50%{opacity:0.8} 100%{opacity:0.4} }
+
+/* rotating moon */ .moon{ position:fixed;right:30px;top:40px;width:120px;height:120px;border-radius:50%; background:radial-gradient(circle at 30% 30%, #fff, #ffe2ff 60%, #e2baf5 100%); opacity:0.25; animation:spinMoon 40s linear infinite; z-index:-1; } @keyframes spinMoon{ from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+/* pink aurora */ .aurora{ position:fixed;top:0;left:0;width:100%;height:40%; background:radial-gradient(ellipse at top, rgba(255,150,230,0.2), transparent 70%); filter:blur(40px); z-index:-1; }
+
+/* princess badge */ .princess{ margin-top:10px;font-size:12px;color:#ffbde8;text-align:center;opacity:0.8; } </style>
+
+<body>
+<div class="heartbeat-bg"></div>
+<div class="moon"></div>
+<div class="aurora"></div>
+  <div class="container" id="app" class="glow">
+    <canvas id="confetti"></canvas><div class="fog"></div>
+
+<header>
+      <div class="logo glow">T</div>
+      <div>
+        <h1 class="glow pulse">For You, Tiyasha</h1>
+        <p class="lead">A dreamy little page to say sorry and remind you how loved you are.</p>
+      </div>
+    </header><div class="main">
+  <div class="left">
+    <div class="photo-grid">
+      <div class="photo" id="photo1"><span class="small">Add a photo</span></div>
+      <div class="photo" id="photo2"><span class="small">Add a photo</span></div>
+      <div class="photo" id="photo3"><span class="small">Add a photo</span></div>
+      <div class="photo" id="photo4"><span class="small">Add a photo</span></div>
+    </div>
+
+    <label class="sorry" style="margin-top:6px;display:inline-block;cursor:pointer;">Upload Photos
+      <input id="uploader" type="file" accept="image/*" multiple style="display:none">
+    </label>
+    <div class="small">Use photos that make her smile. They'll show up instantly.</div>
+  </div>
+
+  <div class="right">
+    <div id="sparkleLayer" class="sparkle"></div>
+    <div class="meter-container">
+      <div class="small">How much Rick loves Tiyasha</div>
+      <div class="meter-bar"></div>
+    </div>
+    <div>
+      <div class="message typing" id="messageArea">
+        <p>Hey <strong>Tiyasha</strong>,</p>
+        <p>I know I messed up, and I’m really sorry. I miss your softness, your smile, your whole vibe. You mean everything to me, and I never want to be the reason you feel hurt.</p>
+        <p>Here’s a little dreamy page just for you. I hope it shows even a tiny bit of how much I love you. You’re my calm, my comfort, my favorite person.</p>
+        <p style="margin-top:10px">Love, <strong>Rick</strong></p>
+      </div>
+    </div>
+
+    <div class="action-row" style="margin-top:14px;display:flex;gap:12px;align-items:center;">
+      <button class="sorry" id="apologyBtn">Say Sorry ❤️</button>
+      <button class="save" id="downloadBtn">Download</button>
+      <button class="btn2" id="playMusicBtn">Play "Tere Hawaale"</button>
+      <input id="musicInput" type="file" accept="audio/*" style="display:none">
+    </div>
+  </div>
+</div>
+
+<div class="princess">Made for my princess, Tiyasha</div>
+
+<footer>
+      <div>Made with ❤️ for Tiyasha</div>
+      <div class="small">Download and show her when you're ready.</div>
+    </footer>
+  </div>  <script>
+    const photoEls = [1,2,3,4].map(i => document.getElementById('photo'+i));
+    const uploader = document.getElementById('uploader');
+    const musicInput = document.getElementById('musicInput');
+    const playMusicBtn = document.getElementById('playMusicBtn');
+    const apologyBtn = document.getElementById('apologyBtn');
+
+    function setImage(el, src){
+      el.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = src;
+      el.appendChild(img);
+    }
+
+    function handleFiles(files){
+      const arr = Array.from(files).slice(0,4);
+      arr.forEach((file, i)=>{
+        const reader = new FileReader();
+        reader.onload = e => setImage(photoEls[i], e.target.result);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    uploader.addEventListener('change', e=> handleFiles(e.target.files));
+
+    photoEls.forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const f = document.createElement('input');
+        f.type='file'; f.accept='image/*';
+        f.onchange = ev => handleFiles(ev.target.files);
+        f.click();
+      });
+    });
+
+    const messageArea = document.getElementById('messageArea');
+    messageArea.contentEditable = true;
+
+    document.getElementById('downloadBtn').addEventListener('click', ()=>{
+      const doc = document.documentElement.outerHTML;
+      const blob = new Blob([doc], {type:'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href=url; a.download='for-tiyasha.html'; a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    let audio;
+    playMusicBtn.addEventListener('click', ()=>{
+      musicInput.click();
+    });
+
+    musicInput.addEventListener('change', (e)=>{
+      const file = e.target.files[0]; if(!file) return;
+      const url = URL.createObjectURL(file);
+      if(audio){audio.pause(); URL.revokeObjectURL(audio.src)}
+      audio = new Audio(url);
+      audio.loop = true;
+      audio.volume = 0.6;
+      audio.play();
+    });
+
+    apologyBtn.addEventListener('click', ()=>{
+      const heart = document.createElement('div');
+      heart.className = 'heart-anim';
+      heart.innerHTML = '❤️';
+      heart.style.left = (window.innerWidth/2 - 10) + 'px';
+      heart.style.top = '60%';
+      document.body.appendChild(heart);
+      setTimeout(()=>heart.remove(), 2000);
+    });
+  </script><script>
+  // sparkle generator
+  const sparkleLayer = document.getElementById('sparkleLayer');
+  setInterval(()=>{
+    const sp = document.createElement('div');
+    sp.style.position='absolute';
+    sp.style.left=Math.random()*100+'%';
+    sp.style.top='100%';
+    sp.style.fontSize=(12+Math.random()*10)+'px';
+    sp.innerHTML='✦';
+    sp.style.color='#ffcdf5';
+    sp.style.opacity='0.8';
+    sp.style.animation='sparkleFloat 2.5s ease-out forwards';
+    sparkleLayer.appendChild(sp);
+    setTimeout(()=>sp.remove(),2500);
+  },200);
+
+  // drifting particles
+  for(let i=0;i<20;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const size=Math.random()*10+6;
+    p.style.width=size+'px';
+    p.style.height=size+'px';
+    p.style.left=Math.random()*100+'%';
+    p.style.top=(50+Math.random()*40)+'%';
+    p.style.animationDuration=(8+Math.random()*6)+'s';
+    document.body.appendChild(p);
+  }
+</script><script>
+  // fireflies
+  for(let i=0;i<14;i++){
+    const f=document.createElement('div');
+    f.className='firefly';
+    f.style.left=Math.random()*100+'%';
+    f.style.top=Math.random()*100+'%';
+    f.style.animationDuration=(7+Math.random()*6)+'s';
+    document.body.appendChild(f);
+  }
+
+  // heart mouse trail
+  document.addEventListener('mousemove',e=>{
+    const h=document.createElement('div');
+    h.className='trail-heart';
+    h.innerHTML='❤';
+    h.style.left=e.pageX+'px';
+    h.style.top=e.pageY+'px';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),1200);
+  });
+</script></body>
+</html>
